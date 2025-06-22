@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blockchain Voting DApp</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg>
+    Blockchain Voting DApp
+  </header>
+
+  <div class="container">
+    <div class="connected-account">
+      <span class="dot"></span>
+      <span id="connectedAccount">Not connected</span>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-card">
+        <div class="label">Total Candidates</div>
+        <div class="value" id="totalCandidates">0</div>
+      </div>
+      <div class="status-card">
+        <div class="label">Total Votes</div>
+        <div class="value" id="totalVotes">0</div>
+      </div>
+      <div class="status-card">
+        <div class="label">Your Status</div>
+        <div class="value not-voted" id="votingStatus">Not Voted</div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+      <section class="section" id="addCandidateSection">
+        <h2>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 14c1.66 0 2.99-1.34 2.99-3S16.66 8 15 8s-3 1.34-3 3 1.34 3 3 3zm-6 0c1.66 0 2.99-1.34 2.99-3S10.66 8 9 8 6 9.34 6 11s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V20h14v-2.5c0-2.33-4.67-3.5-7-3.5zm6 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V20h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+          </svg>
+          Add New Candidate
+        </h2>
+        <input type="text" id="candidateName" placeholder="Candidate Name" />
+        <button class="btn-primary" id="addCandidateBtn">Add Candidate</button>
+        <p class="message" id="addCandidateMessage"></p>
+      </section>
+
+      <section class="section" id="candidateListSection">
+        <h2>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zm0-10v2h14V7H7z"/>
+          </svg>
+          Candidate List
+          <button class="btn-secondary" id="refreshListBtn">Refresh List</button>
+        </h2>
+        <div id="candidateList">Loading candidates...</div>
+        <p class="message" id="voteMessage"></p>
+      </section>
+    </div>
+
+    <section class="section" id="candidateDetailsSection">
+      <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M11 7h2v6h-2zm0 8h2v2h-2z"/>
+          <circle cx="12" cy="4" r="2"/>
+        </svg>
+        Candidate Details
+      </h2>
+      <input type="number" id="candidateIdInput" placeholder="Enter candidate ID" min="1" />
+      <button class="btn-info" id="getDetailsBtn">Get Details</button>
+      <div id="candidateDetails" style="margin-top: 15px;"></div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
